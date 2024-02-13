@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+
+[dev-packages]
+pandas = "*"
+numpy = "*"
+scikit-learn = "*"
+scikit-learn-intelex = "*"
+scipy = "*"
+xgboost = "*"
+lightgbm = "*"
+catboost = "*"
+torch = "*"
+tensorflow = "*"
+transformers = "*"
+huggingface-hub = "*"
+
+
+[requires]
+python_version = "3.10"
+python_full_version = "3.10.13"
