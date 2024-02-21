@@ -1,0 +1,39 @@
+body{
+    background-color: #00001f;
+    overflow: hidden;
+}
+
+#globeViz{
+    position: relative;
+    /* background-color: blue; */
+}
+.scene-container{
+    background-color: #000011;
+}
+#title{
+    position: relative;
+    z-index: -1;
+}
+#headBehindGlobe {
+    position: absolute;
+    z-index: 1;
+    color: white;
+    font-size: 120px;
+    top: 37%;
+    left: 10%;
+    font-family: 'Open Sans', sans-serif;
+    text-shadow: 0 0 100px white;
+    transition: all 1s ease;
+}
+    
+#textBehindGlobe{
+    position: absolute;
+    z-index: 1;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 27px; 
+    top: 60%; 
+    left: 17%; 
+    text-shadow: 20px 20px 700px white;
+    
+}  
