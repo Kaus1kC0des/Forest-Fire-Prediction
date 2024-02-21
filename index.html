@@ -2,22 +2,25 @@
     
     <head>
   <style> body { margin: 0; } </style>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <script src="//unpkg.com/react/umd/react.production.min.js"></script>
   <script src="//unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
   <script src="//unpkg.com/@babel/standalone"></script>
 
   <script src="//unpkg.com/react-globe.gl"></script>
   <link rel="stylesheet" href="./style.css" type="text/css">
-  <!--<script src="../../dist/react-globe.gl.js"></script>-->
+
 </head>
 
 <body>
    
-    
-<div id="globeViz"><h1 id="title">FOREST FIRE PREDICTOR</h1></div>
+  <h1 id="headBehindGlobe">Ignis Insights</h1>
+  <p id="textBehindGlobe">Predict! Protect! Preserve!</p>
+<div id="globeViz"></div>
 
-<script src="earth.jsx" type="text/jsx" data-type="module">
+<script src="./earth.jsx" type="text/babel" data-type="module">
   
 </script>
 </body>

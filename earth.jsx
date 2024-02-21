@@ -9,11 +9,12 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
       const globe = globeEl.current;
 
       // Auto-rotate
-      globe.controls().autoRotate = false;
-    //   globe.controls().autoRotateSpeed = 0.50;
-    globe.controls().enableRotate = false;
+      globe.controls().autoRotate = true;
+      globe.controls().autoRotateSpeed = -1;
+      globe.controls().animateIn = true;
+      globe.controls().enableRotate = false;
       globe.controls().enableZoom = false;
-        globe.controls().zIndex=1;
+ 
 
 
       // Add clouds sphere
@@ -26,7 +27,7 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
           new THREE.SphereGeometry(globe.getGlobeRadius() * (1 + CLOUDS_ALT), 75, 75),
           new THREE.MeshPhongMaterial({ map: cloudsTexture, transparent: true })
         );
-      //  globe.scene();
+       globe.scene();
 
         (function rotateClouds() {
           clouds.rotation.y += CLOUDS_ROTATION_SPEED * Math.PI / 180;
@@ -36,11 +37,12 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
     }, []);
 
     return (
-        <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', left: '400px', transition: 'left 3s' }}>
           
           <Globe
             ref={globeEl}
             animateIn={true}
+            z-index={1}
             backgroundColor={'#00001f'}
             
             globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
