@@ -1,5 +1,7 @@
 import React from "react";
-// import React-Dom from "react-Dom";
-import earth from "./earth";
+import ReactDom from "react-Dom";
+import App from "./tn"
+// import earth from "./earth";
 
 // ReactDom.render(/)
+ReactDom.render(<App></App>,GetElementById("root"));
