@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden; 
+    }
+    
+    #earth {
+      width: 500px;
+      height: 500px;
+    }
+    
+    #text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 32px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="container">
+    <div id="earth"></div>
+    <div id="text">Hello World!</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <script>
+    var scene = new THREE.Scene();
+
+    var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.position.z = 500;
+
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    var geometry = new THREE.SphereGeometry(200, 60, 40);
+    var material = new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('earth.jpg')});
+    var earth = new THREE.Mesh(geometry, material);
+    scene.add(earth);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      earth.rotation.x += 0.005;
+      earth.rotation.y -= 0.005;    
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  </script>
+
+</body>
+</html>

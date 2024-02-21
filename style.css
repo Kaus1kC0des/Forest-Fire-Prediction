@@ -1,0 +1,18 @@
+body{
+    background-color: #000011;
+}
+
+#globeViz{
+    position: relative;
+    /* background-color: blue; */
+}
+.scene-container{
+    background-color: #000011;
+}
+/* #title{
+    position: relative;
+} */
+#textBehindGlobe {
+    position: static;
+    z-index: auto;
+  }
