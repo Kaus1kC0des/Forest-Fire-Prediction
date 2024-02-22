@@ -9,12 +9,12 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
       const globe = globeEl.current;
 
       // Auto-rotate
-      globe.controls().autoRotate = false;
+      globe.controls().autoRotate = true;
       globe.controls().autoRotateSpeed = -1;
       globe.controls().animateIn = true;
-      globe.controls().enableRotate = true ;
+      globe.controls().enableRotate = false ;
       globe.controls().enableZoom = false;
-      globe.controls().scale=5;
+      // globe.controls().scale=5;
    
 
 
@@ -28,7 +28,6 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
           new THREE.SphereGeometry(globe.getGlobeRadius() * (1 + CLOUDS_ALT), 75, 75),
           new THREE.MeshPhongMaterial({ map: cloudsTexture, transparent: true })
         );
-        globe.geometry.scale(1.5, 1.5, 1.5); 
        globe.scene().add(clouds);
        
         (function rotateClouds() {
@@ -45,7 +44,7 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
             ref={globeEl}
             animateIn={true}
             z-index={1}
-            radius={300}
+            // radius={300}
             backgroundColor={'#00001f'}
             globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
             bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
@@ -55,6 +54,7 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
         </div>
       );
   };
+  
 
   ReactDOM.render(
     <World />,
