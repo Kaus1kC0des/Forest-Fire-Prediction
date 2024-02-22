@@ -1,7 +1,5 @@
-// dashboard.js
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-import './styles.css';
+import './dash.css';
 
 const Dashboard = () => {
   const [temperature, setTemperature] = useState(0);
@@ -36,4 +34,4 @@ const Dashboard = () => {
   );
 };
 
-ReactDOM.render(<Dashboard />, document.getElementById('root'));
+export default Dashboard;
