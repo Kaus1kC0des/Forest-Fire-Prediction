@@ -57,6 +57,7 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
   
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       (function rotateClouds() {
         clouds.rotation.y += CLOUDS_ROTATION_SPEED * Math.PI / 180;
         requestAnimationFrame(rotateClouds);
@@ -92,6 +93,11 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
       />
 
     </div>
+=======
+  ReactDOM.render(
+    <World />,
+    document.getElementById('globeViz')
+>>>>>>> parent of 6439787 (added india transition)
 =======
   ReactDOM.render(
     <World />,
