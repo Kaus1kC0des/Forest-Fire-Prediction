@@ -12,7 +12,7 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
       globe.controls().autoRotate = true;
       globe.controls().autoRotateSpeed = -1;
       globe.controls().animateIn = true;
-      globe.controls().enableRotate = false;
+      globe.controls().enableRotate = false ;
       globe.controls().enableZoom = false;
  
 
@@ -37,7 +37,7 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
     }, []);
 
     return (
-      <div style={{ position: 'relative', left: '400px', transition: 'left 3s' }}>
+      <div style={{ position: 'relative', left: '300px', transition: 'left 3s' ,}}>
           
           <Globe
             ref={globeEl}
