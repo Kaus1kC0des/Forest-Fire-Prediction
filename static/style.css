@@ -1,6 +1,6 @@
 body{
     background-color: #00001f;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 #globeViz{
