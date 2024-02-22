@@ -1,6 +1,6 @@
 body{
     background-color: #00001f;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 #globeViz{
@@ -21,7 +21,7 @@ body{
     font-size: 100px;
     top: 27%;
     left: -50%; /* Initial left position */
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Playfair Display', sans-serif;
     text-shadow: 0 0 100px white;
     transition: left 1s ease; /* Transition only the left property over 7 seconds */
 }
@@ -36,7 +36,7 @@ body{
     position: absolute;
     z-index: 1;
     color: white;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Playfair Display', sans-serif;
     font-size: 27px; 
     top: 60%; 
     left: 17%; 
@@ -47,3 +47,4 @@ body{
 #textBehindGlobe.hidden {
     transform: scale(0); /* Initial scale to 0, effectively hiding the text */
 }
+

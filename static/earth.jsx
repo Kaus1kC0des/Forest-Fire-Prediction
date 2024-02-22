@@ -36,20 +36,29 @@ const World = () => {
     // Rotate globe to India after 10 seconds
     globeRotationTimeout.current = setTimeout(() => {
       globe.controls().autoRotate = false; // Stop auto-rotation
-      globe.controls().enableRotate = true; // Allow manual rotation
-      globe.pointOfView({lat: 20, lng: 78, altitude: 0}, 1000); 
-
+      globe.controls().enableRotate = false; // Allow manual rotation
+      globe.pointOfView({lat: 20, lng: 78, altitude: 1.5}, 3000); 
+      moveLeft();
     
 
     }, 10000);
-
+    function moveLeft() {
+      document.addEventListener("DOMContentLoaded", function() {
+        var textBehindGlobe = document.getElementById("glb");
+            textBehindGlobe.style.left = "0px"; // Move the text to the left
+            // textBehindGlobe.style.transform = "scale(1)"; // Set scale to 1 to reveal the text
+      
+    
+    }
+      );
+  };
     return () => {
       clearTimeout(globeRotationTimeout.current);
     };
   }, []);
 
   return (
-    <div style={{ position: 'relative', left: '300px', transition: 'left 3s', transform: 'scale(2.3)' }}>
+    <div class="glb" style={{ position: 'relative', left:'17%' ,transform: 'scale(2.3)' }}>
 
       <Globe
         ref={globeEl}
