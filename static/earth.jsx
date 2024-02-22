@@ -9,12 +9,13 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
       const globe = globeEl.current;
 
       // Auto-rotate
-      globe.controls().autoRotate = true;
+      globe.controls().autoRotate = false;
       globe.controls().autoRotateSpeed = -1;
       globe.controls().animateIn = true;
-      globe.controls().enableRotate = false ;
+      globe.controls().enableRotate = true ;
       globe.controls().enableZoom = false;
- 
+      globe.controls().scale=5;
+   
 
 
       // Add clouds sphere
@@ -27,8 +28,9 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
           new THREE.SphereGeometry(globe.getGlobeRadius() * (1 + CLOUDS_ALT), 75, 75),
           new THREE.MeshPhongMaterial({ map: cloudsTexture, transparent: true })
         );
-       globe.scene();
-
+        globe.geometry.scale(1.5, 1.5, 1.5); 
+       globe.scene().add(clouds);
+       
         (function rotateClouds() {
           clouds.rotation.y += CLOUDS_ROTATION_SPEED * Math.PI / 180;
           requestAnimationFrame(rotateClouds);
@@ -37,14 +39,14 @@ import * as THREE from '//unpkg.com/three/build/three.module.js';
     }, []);
 
     return (
-      <div style={{ position: 'relative', left: '300px', transition: 'left 3s' ,}}>
-          
+      <div style={{ position: 'relative', left: '300px', transition: 'left 3s', transform:'scale(2.3)'}}>
+        
           <Globe
             ref={globeEl}
             animateIn={true}
             z-index={1}
+            radius={300}
             backgroundColor={'#00001f'}
-            
             globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
             bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
           
