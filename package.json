@@ -1,0 +1,22 @@
+{
+  "name": "forest-fire-prediction",
+  "version": "1.0.0",
+  "description": "forest fire prediction Tamil Nadu",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaus1kC0des/Forest-Fire-Prediction.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kaus1kC0des/Forest-Fire-Prediction/issues"
+  },
+  "homepage": "https://github.com/Kaus1kC0des/Forest-Fire-Prediction#readme",
+  "dependencies": {
+    "three-stl-loader": "^1.0.6"
+  }
+}
