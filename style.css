@@ -18,15 +18,21 @@ body{
     position: absolute;
     z-index: 1;
     color: white;
-    font-size: 120px;
-    top: 37%;
-    left: 10%;
+    font-size: 100px;
+    top: 27%;
+    left: -50%; /* Initial left position */
     font-family: 'Open Sans', sans-serif;
     text-shadow: 0 0 100px white;
-    transition: all 1s ease;
+    transition: left 1s ease; /* Transition only the left property over 7 seconds */
 }
-    
-#textBehindGlobe{
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+#textBehindGlobe {
     position: absolute;
     z-index: 1;
     color: white;
@@ -35,5 +41,9 @@ body{
     top: 60%; 
     left: 17%; 
     text-shadow: 20px 20px 700px white;
-    
-}  
+    transition: transform 1s; /* Transition the transform property */
+}
+
+#textBehindGlobe.hidden {
+    transform: scale(0); /* Initial scale to 0, effectively hiding the text */
+}
