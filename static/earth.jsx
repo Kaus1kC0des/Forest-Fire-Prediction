@@ -38,20 +38,12 @@ const World = () => {
       globe.controls().autoRotate = false; // Stop auto-rotation
       globe.controls().enableRotate = false; // Allow manual rotation
       globe.pointOfView({lat: 20, lng: 78, altitude: 1.5}, 3000); 
-      moveLeft();
+      // moveLeft();
     
 
     }, 10000);
-    function moveLeft() {
-      document.addEventListener("DOMContentLoaded", function() {
-        var textBehindGlobe = document.getElementById("glb");
-            textBehindGlobe.style.left = "0px"; // Move the text to the left
-            // textBehindGlobe.style.transform = "scale(1)"; // Set scale to 1 to reveal the text
-      
     
-    }
-      );
-  };
+
     return () => {
       clearTimeout(globeRotationTimeout.current);
     };
