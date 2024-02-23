@@ -5,7 +5,7 @@ app = Flask(__name__,template_folder='./template',static_folder='./static')
 @app.route('/')
 def homePage():
     return render_template('index.html')
-@app.route('/predict')
+@app.route('/predict.html')
 def predict():
     return render_template('predict.html')
 

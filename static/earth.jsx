@@ -52,7 +52,7 @@ const World = () => {
   }, []);
   
   return (
-    <div id="glb" onClick={() => window.location.href='/predict'} style={{ position: 'relative', left: '300px', transition: 'left 3s', transform: 'scale(2.3)' }}>
+    <div id="glb" onClick={() => window.location.href='./predict.html'} style={{ position: 'relative', left: '300px', transition: 'left 3s', transform: 'scale(2.3)' }}>
 
       <Globe
         ref={globeEl}
