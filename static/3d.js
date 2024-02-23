@@ -8,8 +8,8 @@ var loader = new STLLoader();
 var scene = new THREE.Scene();
 
 // Create a camera
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(100, 100 , 10 ); // Update camera position
+var camera = new THREE.PerspectiveCamera(270, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(100, 20 , 30 ); // Update camera position
 camera.lookAt(scene.position); // Look at the center of the scene
 
 // Create a renderer
@@ -18,11 +18,18 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // Load the STL model
-loader.load('../map.stl', function (geometry) {
+loader.load('../final_map.stl', function (geometry) {
   var material = new THREE.MeshNormalMaterial();
   var mesh = new THREE.Mesh(geometry, material);
   // Scale the model
-  mesh.scale.set(30, 30, 30);
+  // mesh.scale.set(30, 30, 30);
+  
+  // Center the model
+  geometry.computeBoundingBox();
+  var boundingBox = geometry.boundingBox;
+  var center = new THREE.Vector3();
+  boundingBox.getCenter(center);
+  mesh.position.sub(center);
   
   scene.add(mesh);
 
@@ -37,4 +44,4 @@ loader.load('../map.stl', function (geometry) {
 
   animate();
 
-  });
+});
