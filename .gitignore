@@ -2,3 +2,6 @@
 .DS_Store/
 .idea/
 __pycache__/
+final_map.stl
+map.stl
+static\final_map.stl

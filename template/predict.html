@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Map with Three.js</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../static/dash.css">
     <style>
         body {
             margin: 0;
             /* overflow: hidden; */
+            
         }
         #map {
             position: absolute;
@@ -16,24 +19,52 @@
             /* left: 20%; */
             /* border: 1px solid black; */
         }
+        #mapImage {
+            position: absolute;
+            /* height: 80vh; */
+            left:5%;
+            top: 5%;
+            
+
+            
+        }
     </style>
 </head>
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/jsm/loaders/STLLoader.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/jsm/loaders/STLLoader.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/jsm/controls/OrbitControls.js"></script>
     <script type="module" src="../static/3d.js">
         
-        </script>
+        </script> -->
 
-       <!-- <img src="../static/ff.png.jpg" usemap="#image_map">
-       <map name="image_map">
-         <area alt="forest1" title="forest1" href="#" coords="350,126,432,216" shape="rect">
-         <area alt="forest 2" title="forest 2" href="#" coords="220,93,289,171" shape="rect">
-         <area alt="forest 3" title="forest 3" href="#" coords="294,41 282,52 285,70 303,96 312,103 328,85 331,69 332,56 320,42 308,39 308,39 301,40 301,40 301,40 301,40 " shape="polygon">
-         <area alt="forest 4" title="forest 4" href="#" coords="548,95,617,166" shape="rect">
-         <area alt="forest 5" title="forest 5" href="#" coords="656,51,719,105" shape="rect">
-         <area alt="" title="" href="" coords="777,387,778,388" shape="rect">
-       </map> -->
+        <img src="../static/final.png" alt="3d map of tamil nadu" usemap="#image_map" id="mapImage" onClick={this.handleAreaClick}>
+        <map name="image_map" >
+          <area alt="1" title="1" href="forest 1"  coords="609,170 585,143 579,125 594,101 624,99 648,113 651,135 634,153 619,167 619,167 619,167 619,168 619,168 619,168 614,162 614,170 615,170 615,170 " shape="polygon">
+          <area alt="2" title="2" href="forest 2"  coords="506,174,582,263" shape="rect">
+          <area alt="3" title="3" href="forests 3"  coords="269,123,350,202" shape="rect">
+          <area alt="4" title="4" href="forest 4"  coords="343,255,437,355" shape="rect">
+          <area alt="5" title="5" href="forest 5"  coords="273,379,377,463" shape="rect">
+          <area alt="6" title="6" href="forest 6"  coords="141,243,226,334" shape="rect">
+          <area alt="7" title="7" href="forest 7"  coords="149,235 125,210 114,192 123,169 144,157 165,160 181,161 189,177 191,198 181,213 174,227 166,235 156,241 " shape="polygon">
+        </map>
+
+
+        <div id="root"></div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script src="../static/dashboard.jsx" type="text/babel"></script>
+
+        <script>
+        handleAreaClick = (event) => {
+            const clickedArea = event.target.closest('area');
+            if (clickedArea) {
+              const areaTitle = clickedArea.dataset.title;
+              this.setState({ forest_name: areaTitle }); // Update state with clicked area title
+            }
+          };
+          </script>
+        
 </body>
 </html>
