@@ -1,62 +1,87 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align content to the right */
+  height: 100vh;
+  padding: 20px;
+}
+
+.content {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Align content to the right */
+  animation: fadeIn 0.5s ease;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.images {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}  
+.images img {
+  align-items: center;
+  width: 50px; /* Adjust the width of the images */
+}
+
+.status p {
+  font-size: 18px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.name{
+  margin-bottom: 60%;
+}
+
+.card {
+  width: 90%; /* Ensuring the cards take up full width */
+  background-color: whitesmoke;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between; /* Ensuring label and data are evenly spaced */
+  align-items: center;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100vh;
-    padding: 20px;
+  to {
+    opacity: 1;
   }
-  
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    animation: fadeIn 0.5s ease;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #ffffff;
-  }
-  
-  .card {
-    background-color: #ffffff;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .button {
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin-top: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+}
+
