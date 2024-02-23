@@ -6,7 +6,7 @@
     <title>3D Map with Three.js</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../static/dash.css">
-    <link rel="stylesheet" href="./styles.css">
+    <!-- <link rel="stylesheet" href="./styles.css"> -->
     <style>
         body {
             margin: 0;
@@ -48,15 +48,18 @@
         </div>
 
         <img src="../static/final.png" usemap="#image_map" id="mapImage">
+        <form action="/clicked" method="post">
         <map name="image_map">
-                <area alt="1" title="1" coords="609,170 585,143 579,125 594,101 624,99 648,113 651,135 634,153 619,167 619,167 619,167 619,168 619,168 619,168 614,162 614,170 615,170 615,170 " shape="polygon">
+                <area alt="1" title="1" href="/api/predict?location=11.25205660,78.357964968" coords="609,170 585,143 579,125 594,101 624,99 648,113 651,135 634,153 619,167 619,167 619,167 619,168 619,168 619,168 614,162 614,170 615,170 615,170 " shape="polygon">
                 <area alt="2" title="2" coords="506,174,582,263" shape="rect">
                 <area alt="3" title="3" coords="269,123,350,202" shape="rect">
                 <area alt="4" title="4" coords="343,255,437,355" shape="rect">
                 <area alt="5" title="5" coords="273,379,377,463" shape="rect">
                 <area alt="6" title="6" coords="141,243,226,334" shape="rect">
                 <area alt="7" title="7" coords="149,235 125,210 114,192 123,169 144,157 165,160 181,161 189,177 191,198 181,213 174,227 166,235 156,241 " shape="polygon">
-        </map>
+
+              </map>
+        </form>
 
 
         <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
@@ -73,12 +76,12 @@
           <div className="container">
             {this.props.lists.map((list, index) => (
               <div key={index} className="content">
-                <div className="name"><h2>{list.forest_name}</h2></div>
+                <div className="names"><h1>{list.forest_name}</h1></div>
                 <div className="images">
                   <img src={list.image} alt="Image" />
                 </div>
                 <div className="status">
-                  <p>{list.Content}% predicted for fire </p>
+                  <p>{list.Content}% predicted for forest fire </p>
                 </div>
                 <div className="card">
                   <div className="label"><i className="fas fa-thermometer-half"></i> Temperature:</div>
@@ -94,7 +97,7 @@
                 </div>
                 <div className="card">
                   <div className="label"><i className="fas fa-fire"></i> Forest Fuel Moisture Index:</div>
-                  <div>{list.duffPercentage} %</div>
+                  <div>{list.duffPercentage}</div>
                 </div>
                 
               </div>
@@ -104,56 +107,14 @@
       }
     }
 
-    //use this to get the data from the api
-
-    // axios
-    
-
-    function weatherapi(lat,lon,name){
-// Build the API URL with dynamic lat and lon
-    const url = `http://api.weatherapi.com/v1/current.json?key=302ef7ffae9443af9b7171520241902&q=${lat},${lon}&aqi=no`;
-
-// Use the Fetch API to make the request
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        // Process the JSON data here
-        // console.log(data);
-        // You can access specific data points using dot notation or bracket notation
-        // For example:
-        const currentTemperature = data.current.temp_c;
-        const humidity = data.current.humidity;
-        const windSpeed = data.current.wind_kph;
-        const locationName = data.location.name;
-        // console.log(`Current temperature in ${locationName}: ${currentTemperature}°C`);
-        const l={
-          forest_name: name,
-          // Content: 50,
-          temperature: currentTemperature,
-          humidity: humidity,
-          windspeed: windSpeed,
-          duffPercentage: 37,
-          image: "../static/icon/sun.png" // Placeholder image URL
-
-        };
-        // console.log(l);
-        return JSON.stringify(l);
-      })
-      .catch(error => {
-        console.error("Error fetching data:", error);
-      });  
-  
-  
-  
-  }
     const lists1 = [
       {
         forest_name: "KOLLI FOREST",
-        Content: 50,
+        Content: 12,
         temperature: 25,
-        humidity: 60,
-        windspeed: 10,
-        duffPercentage: 80,
+        humidity: 63,
+        windspeed: 11.2,
+        duffPercentage: 35,
         image: "../static/icon/sun.png" // Placeholder image URL
       },
     ];
@@ -161,11 +122,11 @@
     const lists2 = [
       {
         forest_name: "PALANI HILLS",
-        Content: 40,
+        Content: 7,
         temperature: 29,
-        humidity: 54,
-        windspeed: 10,
-        duffPercentage: 70,
+        humidity: 68,
+        windspeed: 9.8,
+        duffPercentage: 29,
         image: "../static/icon/sun.png" // Placeholder image URL
       },
     ];
@@ -173,11 +134,11 @@
     const lists3 = [
       {
         forest_name: "AKKAMALAI FOREST",
-        Content: 50,
+        Content: 6,
         temperature: 25,
-        humidity: 60,
-        windspeed: 10,
-        duffPercentage: 80,
+        humidity: 74,
+        windspeed: 12.7,
+        duffPercentage: 17,
         image: "../static/icon/sun.png" // Placeholder image URL
       },
     ];
@@ -185,23 +146,23 @@
     const lists4 = [
       {
         forest_name: "KODAIKANAL FOREST",
-        Content: 40,
+        Content: 11,
         temperature: 29,
-        humidity: 54,
-        windspeed: 10,
-        duffPercentage: 70,
+        humidity: 79,
+        windspeed: 10.3,
+        duffPercentage: 34,
         image: "../static/icon/sun.png" // Placeholder image URL
       },
     ];
 
     const lists5 = [
       {
-        forest_name: "MEGAMALAI HILL FOREST",
-        Content: 50,
+        forest_name: "MEGAMALAI FOREST",
+        Content: 9,
         temperature: 25,
         humidity: 60,
-        windspeed: 10,
-        duffPercentage: 80,
+        windspeed: 10.1,
+        duffPercentage: 24,
         image: "../static/icon/sun.png" // Placeholder image URL
       },
     ];
@@ -209,11 +170,11 @@
     const lists6 = [
       {
         forest_name: "KURANGANI FOREST",
-        Content: 40,
+        Content: 6,
         temperature: 29,
-        humidity: 54,
-        windspeed: 10,
-        duffPercentage: 70,
+        humidity: 70,
+        windspeed: 7.2,
+        duffPercentage: 37,
         image: "../static/icon/sun.png" // Placeholder image URL
       },
     ];
@@ -221,11 +182,11 @@
     const lists7 = [
       {
         forest_name: "NILGIRI FOREST",
-        Content: 40,
+        Content: 11,
         temperature: 29,
-        humidity: 54,
-        windspeed: 10,
-        duffPercentage: 70,
+        humidity: 71,
+        windspeed: 8.9,
+        duffPercentage: 12,
         image: "../static/icon/sun.png" // Placeholder image URL
       },
     ];
@@ -234,73 +195,95 @@
 
             // Get all area elements
             const areas = document.querySelectorAll('area');
-            // const data1=[["Kodaikanal Forest","17% chance of fire","35","47","43"]];
+
             // Add event listener to each area
             areas.forEach(area => {
-              area.addEventListener('click',whenclick());});
-              
-            function whenclick () {
+              area.addEventListener('click', () => {
                 // Log the title attribute when clicked
                 const title= area.getAttribute('title');
+                var xhr = new XMLHttpRequest();
+                var url = 'https://api.weatherapi.com/v1/current.json?key=302ef7ffae9443af9b7171520241902&q=LOCATION';
+                xhr.open('GET', url, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var weatherData = JSON.parse(xhr.responseText);
+                        
+                        // Send the JSON data to your backend
+                        var xhr2 = new XMLHttpRequest();
+                        var backendUrl = 'http://127.0.0.1:5000/clicked';
+                        xhr2.open('POST', backendUrl, true);
+                        xhr2.setRequestHeader('Content-Type', 'application/json');
+                        xhr2.send(JSON.stringify(weatherData));
+                    }
+                };
+                xhr.send();
+
+              });
+            })
+
+            ReactDOM.render(
+  <Dashboard lists={lists1} />,
+  document.getElementById("root")
+            )
                 
-                if (title == 1){
-                  const l=weatherapi("11.25205660","78.357964968","KOLLIMALAI Forest");
-                  console.log(l);
-                    ReactDOM.render(
-                      <Dashboard lists={l} />,
-                      document.getElementById("root")
-                    );
-                    content.style.display = 'block';
-                }
-                else if (title == 2){
-                    // window.location.href = "httpa://localhost:5000/predict/2";
-                    ReactDOM.render(
-      <Dashboard lists={lists2} />,
-      document.getElementById("root")
-    );
-                    content.style.display = 'block';
-                }
-                else if (title == 3){
-                    // window.location.href = "http://localhost:5000/predict/3";
-                    ReactDOM.render(
-      <Dashboard lists={lists3} />,
-      document.getElementById("root")
-    );
-                    content.style.display = 'block';
-                }
-                else if (title == 4){
-                    // window.location.href = "http://localhost:5000/predict/4";
-                    ReactDOM.render(
-      <Dashboard lists={lists4} />,
-      document.getElementById("root")
-    );
-                    content.style.display = 'block';
-                }
-                else if (title == 5){
-                    // window.location.href = "http://localhost:5000/predict/5";
-                    ReactDOM.render(
-      <Dashboard lists={lists5} />,
-      document.getElementById("root")
-    );
-                    content.style.display = 'block';
-                }
-                else if (title == 6){
-                    // window.location.href = "http://localhost:5000/predict/6";
-                    ReactDOM.render(
-      <Dashboard lists={lists6} />,
-      document.getElementById("root")
-    );
-                    content.style.display = 'block';
-                }
-                else if (title == 7){
-                    // window.location.href = "http://localhost:5000/predict/7";
-                    ReactDOM.render(
-      <Dashboard lists={lists7} />,
-      document.getElementById("root")
-    );
-                    content.style.display = 'block';
-                }
+    //             if (title == 1){
+    //                 ReactDOM.render(
+    //   <Dashboard lists={lists1} />,
+    //   document.getElementById("root")
+    // );
+    //                 content.style.display = 'block';
+    //             }
+    //             else if (title == 2){
+    //                 // window.location.href = "httpa://localhost:5000/predict/2";
+    //                 ReactDOM.render(
+    //   <Dashboard lists={lists2} />,
+    //   document.getElementById("root")
+    // );
+    //                 content.style.display = 'block';
+    //             }
+    //             else if (title == 3){
+    //                 // window.location.href = "http://localhost:5000/predict/3";
+    //                 ReactDOM.render(
+    //   <Dashboard lists={lists3} />,
+    //   document.getElementById("root")
+    // );
+    //                 content.style.display = 'block';
+    //             }
+    //             else if (title == 4){
+    //                 // window.location.href = "http://localhost:5000/predict/4";
+    //                 ReactDOM.render(
+    //   <Dashboard lists={lists4} />,
+    //   document.getElementById("root")
+    // );
+    //                 content.style.display = 'block';
+    //             }
+    //             else if (title == 5){
+    //                 // window.location.href = "http://localhost:5000/predict/5";
+    //                 ReactDOM.render(
+    //   <Dashboard lists={lists5} />,
+    //   document.getElementById("root")
+    // );
+    //                 content.style.display = 'block';
+    //             }
+    //             else if (title == 6){
+    //                 // window.location.href = "http://localhost:5000/predict/6";
+    //                 ReactDOM.render(
+    //   <Dashboard lists={lists6} />,
+    //   document.getElementById("root")
+    // );
+    //                 content.style.display = 'block';
+    //             }
+    //             else if (title == 7){
+    //                 // window.location.href = "http://localhost:5000/predict/7";
+    //                 ReactDOM.render(
+    //   <Dashboard lists={lists7} />,
+    //   document.getElementById("root")
+    // );
+    //                 content.style.display = 'block';
+    //             }
                 
+    //           });
+    //         });
           </script>
 </body>
 </html>
