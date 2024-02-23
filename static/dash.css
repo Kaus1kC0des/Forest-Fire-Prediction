@@ -26,23 +26,32 @@ body {
 
 .images {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 30%;
+  margin-left: 30%;
+  margin-right: 20%;
+  align-items: center;
+  width: 35%;
+  height: 10%;
 }  
 .images img {
   align-items: center;
   width: 50px; /* Adjust the width of the images */
 }
 
-.status p {
+.status {
   font-size: 18px;
-  margin: 0;
+  /* margin: 0; */
+  text-align: center;
   margin-bottom: 10px;
+  /* border: 2px solid black; */
 }
 
-.name{
-  margin-bottom: 60%;
+.names{
+
+  
+    /* margin-bottom: 20px; Adjust margin as needed */
+    text-align: center; /* Center-align the text */
+    /* border: 2px solid black; */
+
 }
 
 .card {

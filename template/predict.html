@@ -6,7 +6,7 @@
     <title>3D Map with Three.js</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../static/dash.css">
-    <link rel="stylesheet" href="./styles.css">
+    <!-- <link rel="stylesheet" href="./styles.css"> -->
     <style>
         body {
             margin: 0;
@@ -73,12 +73,12 @@
           <div className="container">
             {this.props.lists.map((list, index) => (
               <div key={index} className="content">
-                <div className="name"><h2>{list.forest_name}</h2></div>
+                <div className="names"><h1>{list.forest_name}</h1></div>
                 <div className="images">
                   <img src={list.image} alt="Image" />
                 </div>
                 <div className="status">
-                  <p>{list.Content}% predicted for fire </p>
+                  <p>{list.Content}% predicted for forest fire </p>
                 </div>
                 <div className="card">
                   <div className="label"><i className="fas fa-thermometer-half"></i> Temperature:</div>
@@ -94,7 +94,7 @@
                 </div>
                 <div className="card">
                   <div className="label"><i className="fas fa-fire"></i> Forest Fuel Moisture Index:</div>
-                  <div>{list.duffPercentage} %</div>
+                  <div>{list.duffPercentage}</div>
                 </div>
                 
               </div>
@@ -107,7 +107,7 @@
     const lists1 = [
       {
         forest_name: "KOLLI FOREST",
-        Content: 50,
+        Content: 12,
         temperature: 25,
         humidity: 60,
         windspeed: 10,
@@ -119,7 +119,7 @@
     const lists2 = [
       {
         forest_name: "PALANI HILLS",
-        Content: 40,
+        Content: 7,
         temperature: 29,
         humidity: 54,
         windspeed: 10,
@@ -131,7 +131,7 @@
     const lists3 = [
       {
         forest_name: "AKKAMALAI FOREST",
-        Content: 50,
+        Content: 6,
         temperature: 25,
         humidity: 60,
         windspeed: 10,
@@ -143,7 +143,7 @@
     const lists4 = [
       {
         forest_name: "KODAIKANAL FOREST",
-        Content: 40,
+        Content: 11,
         temperature: 29,
         humidity: 54,
         windspeed: 10,
@@ -154,8 +154,8 @@
 
     const lists5 = [
       {
-        forest_name: "MEGAMALAI",
-        Content: 50,
+        forest_name: "MEGAMALA FOREST",
+        Content: 9,
         temperature: 25,
         humidity: 60,
         windspeed: 10,
@@ -167,7 +167,7 @@
     const lists6 = [
       {
         forest_name: "KURANGANI FOREST",
-        Content: 40,
+        Content: 6,
         temperature: 29,
         humidity: 54,
         windspeed: 10,
@@ -179,7 +179,7 @@
     const lists7 = [
       {
         forest_name: "NILGIRI FOREST",
-        Content: 40,
+        Content: 11,
         temperature: 29,
         humidity: 54,
         windspeed: 10,
@@ -192,7 +192,6 @@
 
             // Get all area elements
             const areas = document.querySelectorAll('area');
-            // const data1=[["Kodaikanal Forest","17% chance of fire","35","47","43"]];
             // Add event listener to each area
             areas.forEach(area => {
               area.addEventListener('click', () => {
@@ -260,3 +259,4 @@
           </script>
 </body>
 </html>
+~~
