@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
           <div className="content">
             <div className="name">FOREST NAME:{this.state.forest_name}</div>
             <div className="images">
-              <img src="./icon/fire.png" />
+              <img src="./icon/sun.png" />
               {/* <img src="./icon/heating.png" />
               <img src="./icon/sun.png" /> */}
             </div>

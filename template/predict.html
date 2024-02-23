@@ -6,6 +6,7 @@
     <title>3D Map with Three.js</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../static/dash.css">
+    <link rel="stylesheet" href="./styles.css">
     <style>
         body {
             margin: 0;
@@ -22,8 +23,17 @@
             position: absolute;
         }
         area {
-    cursor: pointer;
-  }
+            cursor: pointer;
+        }
+        .content {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 260px; 
+            height: 100%; 
+            background-color: #fff; 
+            /* display: none;  */
+        }
     </style>
 </head>
 <body>
@@ -33,6 +43,9 @@
     <script type="module" src="../static/3d.js">
         
         </script> -->
+        <div id="container" >
+            
+        </div>
 
         <img src="../static/final.png" usemap="#image_map" id="mapImage">
         <map name="image_map">
@@ -46,12 +59,55 @@
         </map>
 
 
-        <div id="root"></div>
         <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-        <script src="../static/dashboard.jsx" type="text/babel"></script>
+        <!-- <script src="../static/dashboard.jsx" type="text/babel"></script> -->
 
+        <script type="text/babel">
+            // Define your React component
+            class Dashboard extends React.Component {
+              constructor(props) {
+                super(props);
+                this.state = {
+                  temperature: 25,
+                  humidity: 60,
+                  duffPercentage: 80,
+                  showContent: true,
+                };
+              }
+            
+              toggleContent = () => {
+                this.setState((prevState) => ({
+                  showContent: !prevState.showContent,
+                }));
+              };
+              render() {
+    return (
+          <div className="content">
+            <div className="name">{this.state.forest_name}</div>
+            <div className="images">
+              <img src="../static/icon/fire.png" />
+            </div>
+            <div className="status"><p>{this.state.content}% predicted for fire </p></div>
+            <div className="card">
+              <div className="label"><i className="fas fa-thermometer-half"></i> Temperature:</div>
+              <div>{this.state.temperature} °C</div>
+            </div>
+            <div className="card">
+              <div className="label"><i className="fas fa-tint"></i> Humidity:</div>
+              <div>{this.state.humidity} %</div>
+            </div>
+            <div className="card">
+              <div className="label"><i className="fas fa-fire"></i> Forest Fuel Moisture Index:</div>
+              <div>{this.state.duffPercentage} %</div>
+            </div>
+          </div>
+    );
+  }
+}
+        ReactDOM.render(<Dashboard />, document.getElementById("container"));
+        </script>
         <script>
             // Get all area elements
             const areas = document.querySelectorAll('area');
@@ -62,26 +118,32 @@
                 // Log the title attribute when clicked
                 const title= area.getAttribute('title');
                 if (title == 1){
-                    window.location.href = "http://localhost:5000/predict/1";
                     
+
                 }
                 else if (title == 2){
-                    window.location.href = "http://localhost:5000/predict/2";
+                    // window.location.href = "httpa://localhost:5000/predict/2";
+                    content.style.display = 'block';
                 }
                 else if (title == 3){
-                    window.location.href = "http://localhost:5000/predict/3";
+                    // window.location.href = "http://localhost:5000/predict/3";
+                    content.style.display = 'block';
                 }
                 else if (title == 4){
-                    window.location.href = "http://localhost:5000/predict/4";
+                    // window.location.href = "http://localhost:5000/predict/4";
+                    content.style.display = 'block';
                 }
                 else if (title == 5){
-                    window.location.href = "http://localhost:5000/predict/5";
+                    // window.location.href = "http://localhost:5000/predict/5";
+                    content.style.display = 'block';
                 }
                 else if (title == 6){
-                    window.location.href = "http://localhost:5000/predict/6";
+                    // window.location.href = "http://localhost:5000/predict/6";
+                    content.style.display = 'block';
                 }
                 else if (title == 7){
-                    window.location.href = "http://localhost:5000/predict/7";
+                    // window.location.href = "http://localhost:5000/predict/7";
+                    content.style.display = 'block';
                 }
                 
               });

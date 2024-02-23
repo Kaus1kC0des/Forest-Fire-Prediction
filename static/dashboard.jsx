@@ -2,11 +2,11 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      forest_name: "__________",
-      content: "_____",
+      forest_name: "KODAIKANAL FOREST",
+      content: "17%",
       temperature: 25,
-      humidity: 60,
-      duffPercentage: 80,
+      humidity: 46,
+      duffPercentage: 37,
       showContent: true,
     };
   }
@@ -22,13 +22,13 @@ class Dashboard extends React.Component {
       <div className="container">
         {/* {this.state.showContent && ( */}
           <div className="content">
-            <div className="name">FOREST NAME:{this.state.forest_name}</div>
+            <div className="name">{this.state.forest_name}</div>
             <div className="images">
               <img src="../static/icon/fire.png" />
               {/* <img src="./icon/heating.png" />
               <img src="./icon/sun.png" /> */}
             </div>
-            <div className="status"><p>Fire Danger Status:{this.state.content}</p></div>
+            <div className="status"><p>{this.state.content}% predicted for fire </p></div>
             <div className="card">
               <div className="label"><i className="fas fa-thermometer-half"></i> Temperature:</div>
               <div>{this.state.temperature} °C</div>
@@ -38,7 +38,7 @@ class Dashboard extends React.Component {
               <div>{this.state.humidity} %</div>
             </div>
             <div className="card">
-              <div className="label"><i className="fas fa-fire"></i> Duff Percentage:</div>
+              <div className="label"><i className="fas fa-fire"></i> Forest Fuel Moisture Index:</div>
               <div>{this.state.duffPercentage} %</div>
             </div>
           </div>
