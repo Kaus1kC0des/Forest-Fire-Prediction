@@ -64,85 +64,194 @@
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
         <!-- <script src="../static/dashboard.jsx" type="text/babel"></script> -->
 
-        <script type="text/babel">
-            // Define your React component
-            class Dashboard extends React.Component {
-              constructor(props) {
-                super(props);
-                this.state = {
-                  temperature: 25,
-                  humidity: 60,
-                  duffPercentage: 80,
-                  showContent: true,
-                };
-              }
-            
-              toggleContent = () => {
-                this.setState((prevState) => ({
-                  showContent: !prevState.showContent,
-                }));
-              };
-              render() {
-    return (
-          <div className="content">
-            <div className="name">{this.state.forest_name}</div>
-            <div className="images">
-              <img src="../static/icon/fire.png" />
-            </div>
-            <div className="status"><p>{this.state.content}% predicted for fire </p></div>
-            <div className="card">
-              <div className="label"><i className="fas fa-thermometer-half"></i> Temperature:</div>
-              <div>{this.state.temperature} °C</div>
-            </div>
-            <div className="card">
-              <div className="label"><i className="fas fa-tint"></i> Humidity:</div>
-              <div>{this.state.humidity} %</div>
-            </div>
-            <div className="card">
-              <div className="label"><i className="fas fa-fire"></i> Forest Fuel Moisture Index:</div>
-              <div>{this.state.duffPercentage} %</div>
-            </div>
+        <div id="root"></div>
+
+  <script type="text/babel">
+    class Dashboard extends React.Component {
+      render() {
+        return (
+          <div className="container">
+            {this.props.lists.map((list, index) => (
+              <div key={index} className="content">
+                <div className="name"><h2>{list.forest_name}</h2></div>
+                <div className="images">
+                  <img src={list.image} alt="Image" />
+                </div>
+                <div className="status">
+                  <p>{list.Content}% predicted for fire </p>
+                </div>
+                <div className="card">
+                  <div className="label"><i className="fas fa-thermometer-half"></i> Temperature:</div>
+                  <div>{list.temperature} °C</div>
+                </div>
+                <div className="card">
+                  <div className="label"><i className="fas fa-tint"></i> Humidity:</div>
+                  <div>{list.humidity} %</div>
+                </div>
+                <div className="card">
+                  <div className="label"><i className="fas fa-wind"></i> Wind Speed:</div>
+                  <div>{list.windspeed} km/h</div>
+                </div>
+                <div className="card">
+                  <div className="label"><i className="fas fa-fire"></i> Forest Fuel Moisture Index:</div>
+                  <div>{list.duffPercentage} %</div>
+                </div>
+                
+              </div>
+            ))}
           </div>
-    );
-  }
-}
-        ReactDOM.render(<Dashboard />, document.getElementById("container"));
-        </script>
-        <script>
+        );
+      }
+    }
+
+    const lists1 = [
+      {
+        forest_name: "KOLLI FOREST",
+        Content: 50,
+        temperature: 25,
+        humidity: 60,
+        windspeed: 10,
+        duffPercentage: 80,
+        image: "../static/icon/sun.png" // Placeholder image URL
+      },
+    ];
+
+    const lists2 = [
+      {
+        forest_name: "PALANI HILLS",
+        Content: 40,
+        temperature: 29,
+        humidity: 54,
+        windspeed: 10,
+        duffPercentage: 70,
+        image: "../static/icon/sun.png" // Placeholder image URL
+      },
+    ];
+
+    const lists3 = [
+      {
+        forest_name: "AKKAMALAI FOREST",
+        Content: 50,
+        temperature: 25,
+        humidity: 60,
+        windspeed: 10,
+        duffPercentage: 80,
+        image: "../static/icon/sun.png" // Placeholder image URL
+      },
+    ];
+
+    const lists4 = [
+      {
+        forest_name: "KODAIKANAL FOREST",
+        Content: 40,
+        temperature: 29,
+        humidity: 54,
+        windspeed: 10,
+        duffPercentage: 70,
+        image: "../static/icon/sun.png" // Placeholder image URL
+      },
+    ];
+
+    const lists5 = [
+      {
+        forest_name: "MEGAMALAI",
+        Content: 50,
+        temperature: 25,
+        humidity: 60,
+        windspeed: 10,
+        duffPercentage: 80,
+        image: "../static/icon/sun.png" // Placeholder image URL
+      },
+    ];
+
+    const lists6 = [
+      {
+        forest_name: "KURANGANI FOREST",
+        Content: 40,
+        temperature: 29,
+        humidity: 54,
+        windspeed: 10,
+        duffPercentage: 70,
+        image: "../static/icon/sun.png" // Placeholder image URL
+      },
+    ];
+
+    const lists7 = [
+      {
+        forest_name: "NILGIRI FOREST",
+        Content: 40,
+        temperature: 29,
+        humidity: 54,
+        windspeed: 10,
+        duffPercentage: 70,
+        image: "../static/icon/sun.png" // Placeholder image URL
+      },
+    ];
+
+    
+
             // Get all area elements
             const areas = document.querySelectorAll('area');
-          
+            // const data1=[["Kodaikanal Forest","17% chance of fire","35","47","43"]];
             // Add event listener to each area
             areas.forEach(area => {
               area.addEventListener('click', () => {
                 // Log the title attribute when clicked
                 const title= area.getAttribute('title');
+                
                 if (title == 1){
-                    
-
+                    ReactDOM.render(
+      <Dashboard lists={lists1} />,
+      document.getElementById("root")
+    );
+                    content.style.display = 'block';
                 }
                 else if (title == 2){
                     // window.location.href = "httpa://localhost:5000/predict/2";
+                    ReactDOM.render(
+      <Dashboard lists={lists2} />,
+      document.getElementById("root")
+    );
                     content.style.display = 'block';
                 }
                 else if (title == 3){
                     // window.location.href = "http://localhost:5000/predict/3";
+                    ReactDOM.render(
+      <Dashboard lists={lists3} />,
+      document.getElementById("root")
+    );
                     content.style.display = 'block';
                 }
                 else if (title == 4){
                     // window.location.href = "http://localhost:5000/predict/4";
+                    ReactDOM.render(
+      <Dashboard lists={lists4} />,
+      document.getElementById("root")
+    );
                     content.style.display = 'block';
                 }
                 else if (title == 5){
                     // window.location.href = "http://localhost:5000/predict/5";
+                    ReactDOM.render(
+      <Dashboard lists={lists5} />,
+      document.getElementById("root")
+    );
                     content.style.display = 'block';
                 }
                 else if (title == 6){
                     // window.location.href = "http://localhost:5000/predict/6";
+                    ReactDOM.render(
+      <Dashboard lists={lists6} />,
+      document.getElementById("root")
+    );
                     content.style.display = 'block';
                 }
                 else if (title == 7){
                     // window.location.href = "http://localhost:5000/predict/7";
+                    ReactDOM.render(
+      <Dashboard lists={lists7} />,
+      document.getElementById("root")
+    );
                     content.style.display = 'block';
                 }
                 
