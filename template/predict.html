@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Map with Three.js</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #map {
+            position: absolute;
+       
+            top: 30%;
+            /* left: 20%; */
+            /* border: 1px solid black; */
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/jsm/loaders/STLLoader.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/jsm/controls/OrbitControls.js"></script> -->
+    <!-- <script type="module" src="../static/3d.js"> -->
+        
+       <!-- </script> -->
+
+       <img src="../static/ff.png.jpg" usemap="#image_map">
+       <map name="image_map">
+         <area alt="forest1" title="forest1" href="#" coords="350,126,432,216" shape="rect">
+         <area alt="forest 2" title="forest 2" href="#" coords="220,93,289,171" shape="rect">
+         <area alt="forest 3" title="forest 3" href="#" coords="294,41 282,52 285,70 303,96 312,103 328,85 331,69 332,56 320,42 308,39 308,39 301,40 301,40 301,40 301,40 " shape="polygon">
+         <area alt="forest 4" title="forest 4" href="#" coords="548,95,617,166" shape="rect">
+         <area alt="forest 5" title="forest 5" href="#" coords="656,51,719,105" shape="rect">
+         <area alt="" title="" href="" coords="777,387,778,388" shape="rect">
+       </map>
+</body>
+</html>

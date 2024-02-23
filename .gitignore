@@ -1,3 +1,5 @@
 *.xml
 .DS_Store/
 .idea/
+*.csv
+__pycache__/

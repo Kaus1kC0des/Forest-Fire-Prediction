@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 django = "*"
+jupyter = "*"
+seaborn = "*"
 
 [dev-packages]
 pandas = "*"
@@ -19,7 +21,6 @@ torch = "*"
 tensorflow = "*"
 transformers = "*"
 huggingface-hub = "*"
-
 
 [requires]
 python_version = "3.10"
