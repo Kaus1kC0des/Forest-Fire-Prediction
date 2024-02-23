@@ -1,33 +1,36 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div id="root"></div>
-    <!-- <script src="./tn.jsx" type="text/babel" ></script> --
-    <script type="module" src="./tn.jsx"></script>
-
-</body>
-</html> -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Scene</title>
-    <!-- Include Three.js library via CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- Include OrbitControls.js via CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/controls/OrbitControls.min.js"></script>
-    <!-- Include your JavaScript file -->
-    <script src="3d.js" type="text/babel"></script>
+    <title>My HTML File</title>
+    <script>
+        // JavaScript code goes here
+        console.log("Hello, world!");
+        // Replace these variables with your actual latitude and longitude
+const lat = 51.5074; // Example latitude
+const lon = -0.1278; // Example longitude
+
+// Build the API URL with dynamic lat and lon
+const url = `http://api.weatherapi.com/v1/current.json?key=302ef7ffae9443af9b7171520241902&q=${lat},${lon}&aqi=no`;
+
+// Use the Fetch API to make the request
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    // Process the JSON data here
+    console.log(data);
+    // You can access specific data points using dot notation or bracket notation
+    // For example:
+    const currentTemperature = data.current.temp_c;
+    const locationName = data.location.name;
+    console.log(`Current temperature in ${locationName}: ${currentTemperature}°C`);
+  })
+  .catch(error => {
+    console.error("Error fetching data:", error);
+  });
+
+    </script>
 </head>
 <body>
-    <!-- You can include HTML content here if needed -->
+    <h1>Welcome to my HTML file</h1>
 </body>
 </html>
-
