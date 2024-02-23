@@ -104,6 +104,48 @@
       }
     }
 
+    //use this to get the data from the api
+
+    // axios
+    
+
+    function weatherapi(lat,lon,name){
+// Build the API URL with dynamic lat and lon
+    const url = `http://api.weatherapi.com/v1/current.json?key=302ef7ffae9443af9b7171520241902&q=${lat},${lon}&aqi=no`;
+
+// Use the Fetch API to make the request
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        // Process the JSON data here
+        // console.log(data);
+        // You can access specific data points using dot notation or bracket notation
+        // For example:
+        const currentTemperature = data.current.temp_c;
+        const humidity = data.current.humidity;
+        const windSpeed = data.current.wind_kph;
+        const locationName = data.location.name;
+        // console.log(`Current temperature in ${locationName}: ${currentTemperature}°C`);
+        const l={
+          forest_name: name,
+          // Content: 50,
+          temperature: currentTemperature,
+          humidity: humidity,
+          windspeed: windSpeed,
+          duffPercentage: 37,
+          image: "../static/icon/sun.png" // Placeholder image URL
+
+        };
+        // console.log(l);
+        return JSON.stringify(l);
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+      });  
+  
+  
+  
+  }
     const lists1 = [
       {
         forest_name: "KOLLI FOREST",
@@ -154,7 +196,7 @@
 
     const lists5 = [
       {
-        forest_name: "MEGAMALAI",
+        forest_name: "MEGAMALAI HILL FOREST",
         Content: 50,
         temperature: 25,
         humidity: 60,
@@ -195,15 +237,19 @@
             // const data1=[["Kodaikanal Forest","17% chance of fire","35","47","43"]];
             // Add event listener to each area
             areas.forEach(area => {
-              area.addEventListener('click', () => {
+              area.addEventListener('click',whenclick());});
+              
+            function whenclick () {
                 // Log the title attribute when clicked
                 const title= area.getAttribute('title');
                 
                 if (title == 1){
+                  const l=weatherapi("11.25205660","78.357964968","KOLLIMALAI Forest");
+                  console.log(l);
                     ReactDOM.render(
-      <Dashboard lists={lists1} />,
-      document.getElementById("root")
-    );
+                      <Dashboard lists={l} />,
+                      document.getElementById("root")
+                    );
                     content.style.display = 'block';
                 }
                 else if (title == 2){
@@ -255,8 +301,6 @@
                     content.style.display = 'block';
                 }
                 
-              });
-            });
           </script>
 </body>
 </html>
