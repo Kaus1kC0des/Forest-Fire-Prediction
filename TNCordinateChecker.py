@@ -1,9 +1,17 @@
 # import geopandas as gpd
-
+import os
 # # Replace these with your actual file paths
-input_file = r"E:\personalProjects\forestFire\New folder\modis_2022_India.csv"
-shapefile_path = r"E:\personalProjects\forestFire\New folder\tn_bound_new.shp"
-output_file = "tamil_nadu_coordinates.csv"
+
+files = {
+    "2017":"modis_2017_India.csv",
+    "2018":"modis_2018_India.csv",
+    "2019":"modis_2019_India.csv",
+    "2020":"modis_2020_India.csv",
+    "2021":"modis_2021_India.csv",
+    "2022":"modis_2022_India.csv"
+         }
+# shapefile_path = r"E:\personalProjects\forestFire\New folder\tn_bound_new.shp"
+
 
 # # Read coordinates from CSV, ensuring correct column order and CRS
 # try:
@@ -113,22 +121,26 @@ tamil_nadu_bounds = {
     "max_long": 80.3
 }
 
-with open(input_file, "r") as csvfile, open(output_file, "w", newline="") as output:
-    reader = csv.reader(csvfile)
-    writer = csv.writer(output)
+output_file = "tamil_nadu_coordinates"
 
-    # Skip header row (if present)
-    next(reader)
+for i in files:
+    year = i
+    with open(files[i], "r") as csvfile, open(f"{output_file}_{year}.csv", "w", newline="") as output:
+        reader = csv.reader(csvfile)
+        writer = csv.writer(output)
 
-    # Filter coordinates and write to output file
-    for row in reader:
-        latitude = float(row[0])
-        longitude = float(row[1])
+        # Skip header row (if present)
+        next(reader)
 
-        if (
-            tamil_nadu_bounds["min_lat"] <= latitude <= tamil_nadu_bounds["max_lat"]
-            and tamil_nadu_bounds["min_long"] <= longitude <= tamil_nadu_bounds["max_long"]
-        ):
-            writer.writerow(row)
+        # Filter coordinates and write to output file
+        for row in reader:
+            latitude = float(row[0])
+            longitude = float(row[1])
 
-print(f"Coordinates in Tamil Nadu saved to {output_file}")
+            if (
+                tamil_nadu_bounds["min_lat"] <= latitude <= tamil_nadu_bounds["max_lat"]
+                and tamil_nadu_bounds["min_long"] <= longitude <= tamil_nadu_bounds["max_long"]
+            ):
+                writer.writerow(row)
+
+        print(f"Coordinates in Tamil Nadu saved to {output_file}")
