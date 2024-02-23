@@ -9,7 +9,7 @@ var scene = new THREE.Scene();
 
 // Create a camera
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(15, -20, 20); // Update camera position
+camera.position.set(100, 100 , 10 ); // Update camera position
 camera.lookAt(scene.position); // Look at the center of the scene
 
 // Create a renderer
@@ -22,7 +22,7 @@ loader.load('../map.stl', function (geometry) {
   var material = new THREE.MeshNormalMaterial();
   var mesh = new THREE.Mesh(geometry, material);
   // Scale the model
-  mesh.scale.set(10, 10, 10);
+  mesh.scale.set(30, 30, 30);
   
   scene.add(mesh);
 
