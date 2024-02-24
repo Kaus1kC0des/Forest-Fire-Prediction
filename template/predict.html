@@ -146,7 +146,7 @@
                 const final_lists = [
                   {
                     forest_name: names[title],
-                    Content: data.Content - title,
+                    Content: (data.Content - title).toFixed(2),
                     temperature: data.temperature,
                     humidity: data.humidity,
                     windspeed: data.wind_speed,

@@ -9,7 +9,7 @@ body {
   align-items: center;
   justify-content: flex-end; /* Align content to the right */
   height: 100%;
-  padding: 20px;
+  padding: 30px;
 }
 
 .content {
