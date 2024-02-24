@@ -119,10 +119,21 @@
         6: "10.097500,71.273528",
         7: "11.374388121,76.76107832"
       }
+      const names = {
+        1: "KOLLI FOREST",
+        2: "PALANI HILLS",
+        3: "AKKAMALAI FOREST",
+        4: "KODAIKANAL FOREST",
+        5: "MEGAMALAI FOREST",
+        6: "KURANGANI FOREST",
+        7: "NILGIRI FOREST"
+      }
       var xhr2 = new XMLHttpRequest();
 
           // Use GET for fetching data, remove unnecessary header
-          var backendUrl = 'http://127.0.0.1:5000/clicked?location=${location[title]}';
+          var backendUrl = `http://127.0.0.1:5000/clicked?location=${location[title]}`;
+
+          console.log(backendUrl);
           xhr2.open('GET', backendUrl, true);
 
           // Add error handling
@@ -131,7 +142,22 @@
               if (xhr2.status === 200) {
                 // Success! Process the response data
                 console.log('Response:', xhr2.responseText);
-                // l=
+                const data = JSON.parse(xhr2.responseText);
+                const final_lists = [
+                  {
+                    forest_name: names[title],
+                    Content: data.Content,
+                    temperature: data.temperature,
+                    humidity: data.humidity,
+                    windspeed: data.wind_speed,
+                    duffPercentage: data.duffPercentage,
+                    image: "/static/icon/sun.png" // Placeholder image URL
+                  },
+                ];
+                ReactDOM.render(
+                  <Dashboard lists={final_lists} />,
+                  document.getElementById("root")
+                );
 
               } else {
                 console.error('Error:', xhr2.statusText);

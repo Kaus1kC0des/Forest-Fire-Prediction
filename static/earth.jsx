@@ -44,7 +44,7 @@ const World = () => {
       globe.controls().autoRotate = false; // Stop auto-rotation
       globe.controls().enableRotate = false; // Allow manual rotation
       globe.pointOfView({lat: 20, lng: 78, altitude: 1.5}, 2500); 
-    }, 10000);
+    }, 7000);
 
     return () => {
       clearTimeout(globeRotationTimeout.current);
