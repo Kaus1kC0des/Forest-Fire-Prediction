@@ -12,14 +12,13 @@ import pandas as pd
 date = date.today().strftime("%Y-%m-%d")
 app = Flask(__name__,template_folder='./template',static_folder='./static')
 # s=StandardScaler()
-
 # pickle_in = bz2.BZ2File("Machine Learning/final_model.pkl", 'rb')
+
 @app.route('/')
 def homePage():
     return render_template('index.html')
 @app.route('/predict.html')
 def predict():
-    
     return render_template('predict.html')
 
 # with open("Machine Learning/final_confident_model.pkl", "rb") as f:
