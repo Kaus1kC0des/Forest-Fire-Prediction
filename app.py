@@ -22,11 +22,11 @@ def predict():
     
     return render_template('predict.html')
 
-with open("Machine Learning/final_confident_model.pkl", "rb") as f:
-    model = pickle.load(f)
+# with open("Machine Learning/final_confident_model.pkl", "rb") as f:
+#     model = pickle.load(f)
 
-# R_pickle_in = bz2.BZ2File('./regression.pkl', 'rb')
-# model_R = pickle.load(R_pickle_in)
+R_pickle_in = bz2.BZ2File('./regression.pkl', 'rb')
+model_R = pickle.load(R_pickle_in)
 
 @app.route('/clicked', methods=['GET','POST'])
 def clicked():
@@ -34,17 +34,19 @@ def clicked():
     # print(data)
     weather=(requests.get(f'http://api.weatherapi.com/v1/current.json?key=302ef7ffae9443af9b7171520241902&q={location}&aqi=no'))
     data = weather.json()
-    c=l=[float(data['current']['temp_c']),float(data["current"]["wind_kph"]),float(random.randint(30,40)),float(random.randint(20,40)),float(random.randint(1,5))]
+    # c=l=[float(data['current']['temp_c']),float(data["current"]["wind_kph"]),float(random.randint(30,40)),float(random.randint(20,40)),float(random.randint(1,5))]
+    c=l=[float(data['current']['temp_c']),float(data["current"]["wind_kph"]),30,23,3]
+
     l = [np.array(l)]
     print(l)
     # s.fit(l)
     # l=s.transform(l)
-    # predictions = model.predict(l)[0]
+    predictions = model_R.predict(l)[0]
     # print(predictions)
     final_data={"temperature":data['current']['temp_c'],
                 "wind_speed":data["current"]["wind_kph"],
                 "humidity":data["current"]["humidity"],
-                "Content": random.uniform(3.7, 17.9),
+                "Content": predictions,
                 "duffPercentage":c[2]}
 
     return final_data
