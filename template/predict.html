@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Map with Three.js</title>
+    <title>Predict here</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="../static/dash.css">
+    <link rel="stylesheet" href="/static/dash.css">
     <!-- <link rel="stylesheet" href="./styles.css"> -->
     <style>
         body {
             margin: 0;
-            /* overflow: hidden; */
+            overflow: hidden;
         }
         #map {
             position: absolute;
@@ -21,6 +21,7 @@
         }
         #mapImage {
             position: absolute;
+            left: 10%;
         }
         area {
             cursor: pointer;
@@ -40,23 +41,23 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/jsm/loaders/STLLoader.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/jsm/controls/OrbitControls.js"></script>
-    <script type="module" src="../static/3d.js">
+    <script type="module" src="/static/3d.js">
         
         </script> -->
         <div id="container" >
             
         </div>
 
-        <img src="../static/final.png" usemap="#image_map" id="mapImage">
+        <img src="/static/final.png" usemap="#image_map" id="mapImage">
         <form action="/clicked" method="post">
         <map name="image_map">
-                <area alt="1" title="1" href="/api/predict?location=11.25205660,78.357964968" coords="609,170 585,143 579,125 594,101 624,99 648,113 651,135 634,153 619,167 619,167 619,167 619,168 619,168 619,168 614,162 614,170 615,170 615,170 " shape="polygon">
-                <area alt="2" title="2" coords="506,174,582,263" shape="rect">
-                <area alt="3" title="3" coords="269,123,350,202" shape="rect">
-                <area alt="4" title="4" coords="343,255,437,355" shape="rect">
-                <area alt="5" title="5" coords="273,379,377,463" shape="rect">
-                <area alt="6" title="6" coords="141,243,226,334" shape="rect">
-                <area alt="7" title="7" coords="149,235 125,210 114,192 123,169 144,157 165,160 181,161 189,177 191,198 181,213 174,227 166,235 156,241 " shape="polygon">
+                <area alt="1" title="1" onclick="mapOnclick(title)"  coords="609,170 585,143 579,125 594,101 624,99 648,113 651,135 634,153 619,167 619,167 619,167 619,168 619,168 619,168 614,162 614,170 615,170 615,170 " shape="polygon">
+                <area alt="2" title="2" onclick="mapOnclick(title)"  coords="506,174,582,263" shape="rect">
+                <area alt="3" title="3" onclick="mapOnclick(title)"  coords="269,123,350,202" shape="rect">
+                <area alt="4" title="4" onclick="mapOnclick(title)"  coords="343,255,437,355" shape="rect">
+                <area alt="5" title="5" onclick="mapOnclick(title)"  coords="273,379,377,463" shape="rect">
+                <area alt="6" title="6" onclick="mapOnclick(title)"  coords="141,243,226,334" shape="rect">
+                <area alt="7" title="7" onclick="mapOnclick(title)"  coords="149,235 125,210 114,192 123,169 144,157 165,160 181,161 189,177 191,198 181,213 174,227 166,235 156,241 " shape="polygon">
 
               </map>
         </form>
@@ -65,11 +66,12 @@
         <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-        <!-- <script src="../static/dashboard.jsx" type="text/babel"></script> -->
+        <!-- <script src="/static/dashboard.jsx" type="text/babel"></script> -->
 
         <div id="root"></div>
 
   <script type="text/babel">
+
     class Dashboard extends React.Component {
       render() {
         return (
@@ -107,6 +109,54 @@
       }
     }
 
+    function mapOnclick(title){
+      const location = {
+        1: "11.25205660,78.357964968",
+        2: "10.450435846,77.5144641601",
+        3: "10.299492951,76.9991845551615",
+        4: "10.23778601,77.4896542610",
+        5: "9.644650,77.300653",
+        6: "10.097500,71.273528",
+        7: "11.374388121,76.76107832"
+      }
+      var xhr2 = new XMLHttpRequest();
+
+          // Use GET for fetching data, remove unnecessary header
+          var backendUrl = 'http://127.0.0.1:5000/clicked?location=${location[title]}';
+          xhr2.open('GET', backendUrl, true);
+
+          // Add error handling
+          xhr2.onreadystatechange = function() {
+            if (xhr2.readyState === 4) {
+              if (xhr2.status === 200) {
+                // Success! Process the response data
+                console.log('Response:', xhr2.responseText);
+                // l=
+
+              } else {
+                console.error('Error:', xhr2.statusText);
+              }
+            }
+          };
+
+          xhr2.send();
+    
+
+      
+    }
+
+    const list=[
+      {
+        forest_name: "Click On A PIN",
+        Content: "",
+        temperature: "",
+        humidity: "",
+        windspeed: "",
+        duffPercentage: "",
+        image: "/static/icon/sun.png" // Placeholder image URL
+      },
+    ]
+
     const lists1 = [
       {
         forest_name: "KOLLI FOREST",
@@ -115,7 +165,7 @@
         humidity: 63,
         windspeed: 11.2,
         duffPercentage: 35,
-        image: "../static/icon/sun.png" // Placeholder image URL
+        image: "/static/icon/sun.png" // Placeholder image URL
       },
     ];
 
@@ -127,7 +177,7 @@
         humidity: 68,
         windspeed: 9.8,
         duffPercentage: 29,
-        image: "../static/icon/sun.png" // Placeholder image URL
+        image: "/static/icon/sun.png" // Placeholder image URL
       },
     ];
 
@@ -139,7 +189,7 @@
         humidity: 74,
         windspeed: 12.7,
         duffPercentage: 17,
-        image: "../static/icon/sun.png" // Placeholder image URL
+        image: "/static/icon/sun.png" // Placeholder image URL
       },
     ];
 
@@ -151,7 +201,7 @@
         humidity: 79,
         windspeed: 10.3,
         duffPercentage: 34,
-        image: "../static/icon/sun.png" // Placeholder image URL
+        image: "/static/icon/sun.png" // Placeholder image URL
       },
     ];
 
@@ -163,7 +213,7 @@
         humidity: 60,
         windspeed: 10.1,
         duffPercentage: 24,
-        image: "../static/icon/sun.png" // Placeholder image URL
+        image: "/static/icon/sun.png" // Placeholder image URL
       },
     ];
 
@@ -175,7 +225,7 @@
         humidity: 70,
         windspeed: 7.2,
         duffPercentage: 37,
-        image: "../static/icon/sun.png" // Placeholder image URL
+        image: "/static/icon/sun.png" // Placeholder image URL
       },
     ];
 
@@ -187,12 +237,12 @@
         humidity: 71,
         windspeed: 8.9,
         duffPercentage: 12,
-        image: "../static/icon/sun.png" // Placeholder image URL
+        image: "/static/icon/sun.png" // Placeholder image URL
       },
+      
     ];
 
     
-
             // Get all area elements
             const areas = document.querySelectorAll('area');
 
@@ -202,7 +252,7 @@
                 // Log the title attribute when clicked
                 const title= area.getAttribute('title');
                 var xhr = new XMLHttpRequest();
-                var url = 'https://api.weatherapi.com/v1/current.json?key=302ef7ffae9443af9b7171520241902&q=LOCATION';
+                var url = 'https://api.weatherapi.com/v1/current.json?key=302ef7ffae9443af9b7171520241902&q=11.25205660,78.357964968';
                 xhr.open('GET', url, true);
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4 && xhr.status == 200) {
@@ -222,7 +272,7 @@
             })
 
             ReactDOM.render(
-  <Dashboard lists={lists1} />,
+  <Dashboard lists={list} />,
   document.getElementById("root")
             )
                 
